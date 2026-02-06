@@ -44,7 +44,7 @@ let userName = "";
             const box = document.getElementById('mainBox');
             box.innerHTML = `
                 <div class="gif-container">
-                    <img src=""https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif">
+                   <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="celebration gif">
                 </div>
                 <h1 class="success-msg">Yayyy! I knew it, ${userName}! ❤️😍</h1>
                 <p style="color:#666; margin-bottom:20px;">Ab hamari date pakki!</p>
