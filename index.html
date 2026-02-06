@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Special Surprise ❤️</title>
+  
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container" id="mainBox">
+        <div id="nameScreen">
+            <h1>Hey! ❤️<br>Pehle apna naam batao</h1>
+            <input type="text" id="pName" placeholder="Tumhara pyaara naam..." autocomplete="off">
+            <button id="yesBtn" onclick="goToValentine()">Next ✨</button>
+        </div>
+
+        <div id="valentineScreen" style="display: none;">
+            <div class="gif-container">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="Asking">
+            </div>
+            <h1 id="qText">Kya tum meri Valentine banogi? ❤️</h1>
+            <div class="buttons">
+                <button id="yesBtn" onclick="celebrate()">HAAN! 🥰</button>
+                <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">Nahi ✋</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Developed with ❤️ by SajjadAli | <a href="https://github.com/sajjadali-fullstack">GitHub</a>
+    </footer>
+
+
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
