@@ -32,24 +32,31 @@ function moveNo() {
 }
 
 function celebrate() {
-    // 1. Confetti Effect
-    confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#ff4d6d', '#ff8fa3', '#ffccd5']
-    });
+    // --- 1. DATA SAVING LOGIC (Yeh line Firebase mein naam bhejti hai) ---
+    if (typeof window.saveValentineData === "function") {
+        window.saveValentineData(userName);
+    }
 
-    // 2. Change UI
+    // --- 2. Confetti Effect (Patakhe) ---
+    if (typeof confetti === "function") {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#ff4d6d', '#ff8fa3', '#ffccd5']
+        });
+    }
+
+    // --- 3. Change UI (Success Message) ---
     const box = document.getElementById('mainBox');
     box.innerHTML = `
-                <div class="gif-container">
-                   <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="celebration gif">
-                </div>
-                <h1 class="success-msg">Yayyy! I knew it, ${userName}! ❤️😍</h1>
-                <p style="color:#666; margin-bottom:20px;">Ab hamari date pakki!</p>
-                <button id="yesBtn" onclick="shareWA()">WhatsApp par batao 💌</button>
-            `;
+        <div class="gif-container">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="celebration gif">
+        </div>
+        <h1 class="success-msg">Yayyy! I knew it, ${userName}! ❤️😍</h1>
+        <p style="color:#666; margin-bottom:20px;">Ab hamari date pakki!</p>
+        <button id="yesBtn" onclick="shareWA()">WhatsApp par batao 💌</button>
+    `;
     document.body.style.background = "#ffccd5";
 }
 
@@ -57,6 +64,3 @@ function shareWA() {
     const text = encodeURIComponent(`Hey! Maine tumhara Valentine proposal accept kar liya hai! ❤️`);
     window.open(`https://wa.me/?text=${text}`, '_blank');
 }
-
-
-

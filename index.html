@@ -38,7 +38,8 @@
         Developed with ❤️ by SajjadAli | <a href="https://github.com/sajjadali-fullstack">GitHub</a>
     </footer>
 
-    <!-- Database Connection -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -53,11 +54,9 @@
             appId: "1:695918444925:web:fc6b9c9807e338d5844c14"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Backend function jo data save karega (Hidden from User UI)
         window.saveValentineData = function (nameValue) {
             push(ref(database, 'responses'), {
                 visitorName: nameValue,
@@ -67,9 +66,7 @@
         };
     </script>
 
-    <!-- External JS -->
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </body>
 
