@@ -31,8 +31,4 @@ this fun little project is perfect to **share with your loved one**. 💌
 
 ---
 
-## 🚀 How to Use
 
-1. **Clone the repository** or download it as a ZIP:  
-   ```bash
-   git clone https://github.com/sajjadali-fullstack/valentine-surprise.git
