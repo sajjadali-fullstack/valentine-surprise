@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine Special Surprise ❤️</title>
-
-
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
+    
     <div class="container" id="mainBox">
         <div id="nameScreen">
             <h1>Hey! ❤️<br>Pehle apna naam batao</h1>
@@ -22,9 +17,7 @@
 
         <div id="valentineScreen" style="display: none;">
             <div class="gif-container">
-                <!-- <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="Asking"> -->
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIxdmF3Zzh6dzF4eGZ6ZzR4eGZ6ZzR4eGZ6ZzR4eGZ6ZzR4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif"
-                    alt="" srcset="">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIxdmF3Zzh6dzF4eGZ6ZzR4eGZ6ZzR4eGZ6ZzR4eGZ6ZzR4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Gif">
             </div>
             <h1 id="qText">Kya tum meri Valentine banogi? ❤️</h1>
             <div class="buttons">
@@ -47,7 +40,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyCv61IHzBvhykmB9jJ7fIL6Pt9cFUeG9YM",
             authDomain: "valentine-surprise-data.firebaseapp.com",
-            databaseURL: "https://valentine-surprise-data-default-rtdb.firebaseio.com",
+            databaseURL: "https://valentine-surprise-data-default-rtdb.firebaseio.com", 
             projectId: "valentine-surprise-data",
             storageBucket: "valentine-surprise-data.firebasestorage.app",
             messagingSenderId: "695918444925",
@@ -57,17 +50,21 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        window.saveValentineData = function (nameValue) {
+        // Global scope mein function daal rahe hain taaki script.js ise dekh sake
+        window.saveValentineData = function(nameValue) {
+            console.log("Saving data for:", nameValue); // Browser console mein check karne ke liye
             push(ref(database, 'responses'), {
                 visitorName: nameValue,
                 status: "Accepted ❤️",
                 time: new Date().toLocaleString()
+            }).then(() => {
+                console.log("Data successfully saved to Firebase!");
+            }).catch((error) => {
+                console.error("Firebase Error:", error);
             });
         };
     </script>
 
-    <script src="script.js" defer></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>

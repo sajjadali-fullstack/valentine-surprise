@@ -1,7 +1,7 @@
 let userName = "";
 const messages = ["Soch lo!", "Pakka nahi?", "Try again!", "Ek baar aur!", "Hehe, no!"];
 
-function goToValentine() {
+window.goToValentine = function() {
     const input = document.getElementById('pName');
     if (input.value.trim() !== "") {
         userName = input.value.trim();
@@ -11,11 +11,10 @@ function goToValentine() {
     } else {
         alert("Naam likhna zaroori hai! 😊");
     }
-}
+};
 
-function moveNo() {
+window.moveNo = function() {
     const btn = document.getElementById('noBtn');
-    // Safe screen area for mobile
     const padding = 50;
     const maxX = window.innerWidth - btn.offsetWidth - padding;
     const maxY = window.innerHeight - btn.offsetHeight - padding;
@@ -26,18 +25,18 @@ function moveNo() {
     btn.style.position = 'fixed';
     btn.style.left = randomX + 'px';
     btn.style.top = randomY + 'px';
-
-    // Random funny text
     btn.innerText = messages[Math.floor(Math.random() * messages.length)];
-}
+};
 
-function celebrate() {
-    // --- 1. DATA SAVING LOGIC (Yeh line Firebase mein naam bhejti hai) ---
+window.celebrate = function() {
+    // 1. Firebase call (Important!)
     if (typeof window.saveValentineData === "function") {
         window.saveValentineData(userName);
+    } else {
+        console.error("Error: saveValentineData function not found!");
     }
 
-    // --- 2. Confetti Effect (Patakhe) ---
+    // 2. Confetti Effect
     if (typeof confetti === "function") {
         confetti({
             particleCount: 150,
@@ -47,20 +46,20 @@ function celebrate() {
         });
     }
 
-    // --- 3. Change UI (Success Message) ---
+    // 3. UI Update
     const box = document.getElementById('mainBox');
     box.innerHTML = `
         <div class="gif-container">
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="celebration gif">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2twbGFjcnFhczN0ODNvcW5zNDc1b2NhaDlwdTVncXBvOWx5OTdtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hxERQNWQudqSF1iDnr/giphy.gif" alt="celebration">
         </div>
         <h1 class="success-msg">Yayyy! I knew it, ${userName}! ❤️😍</h1>
         <p style="color:#666; margin-bottom:20px;">Ab hamari date pakki!</p>
-        <button id="yesBtn" onclick="shareWA()">WhatsApp par batao 💌</button>
+        <button id="yesBtn" onclick="window.shareWA()">WhatsApp par batao 💌</button>
     `;
     document.body.style.background = "#ffccd5";
-}
+};
 
-function shareWA() {
+window.shareWA = function() {
     const text = encodeURIComponent(`Hey! Maine tumhara Valentine proposal accept kar liya hai! ❤️`);
     window.open(`https://wa.me/?text=${text}`, '_blank');
-}
+};
